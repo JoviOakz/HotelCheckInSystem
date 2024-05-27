@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <AnchorPane layoutX="61.0" layoutY="23.0" maxHeight="49.0" maxWidth="640.0" minHeight="35.0" minWidth="640.0" prefHeight="35.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Nova Reserva" />
+                  <Button layoutX="557.0" layoutY="5.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Remover" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="35.0" prefHeight="363.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <TableView fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn prefWidth="137.0" text="Cliente" />
+                      <TableColumn prefWidth="83.0" text="Inicio" />
+                        <TableColumn prefWidth="161.0" text="Final" />
+                        <TableColumn prefWidth="168.0" text="Check In" />
+                        <TableColumn prefWidth="164.0" text="Check Out" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
