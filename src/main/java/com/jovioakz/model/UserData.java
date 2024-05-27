@@ -8,12 +8,16 @@ public class UserData {
     @Id
     @GeneratedValue
     private Long id;
+
     @Column(name = "Username")
     private String username;
+
     @Column(name = "Userpass")
     private String userpass;
+
     @Column(name = "IsAdm")
     private Boolean isAdm;
+    
     @Column(name = "IsRandPass")
     private Boolean isRandPass;
 
