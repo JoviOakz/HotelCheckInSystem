@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-// import javafx.stage.Stage;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
@@ -62,10 +62,10 @@ public class LoginSceneController {
             return;
         }
         
-        // // Fechando o login
-        // Stage crrStage = (Stage) btLogin
-        //         .getScene().getWindow();
-        // crrStage.close();
+        // Fechando o login
+        Stage crrStage = (Stage) btLogin
+                .getScene().getWindow();
+        crrStage.close();
 
         // // Abrindo a tela principal
         // Stage stage = new Stage();
