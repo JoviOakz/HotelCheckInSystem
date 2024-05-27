@@ -42,6 +42,5 @@ public class Authentification {
             return auth;
         auth.user = loggedUser;
         return auth;
-        // opa
     }
 }
