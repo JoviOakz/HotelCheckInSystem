@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.jovioakz.model.BookingData;
 
@@ -50,17 +51,18 @@ public class RegisterPageController {
     protected void submit(ActionEvent e) throws Exception {
         BookingData data = new BookingData();
    
-        List<Integer> checkIn = Arrays.asList(tfCheckIn.getText().split(":"))
+        String[] value = tfCheckIn.getText().split(":");
+        List<Integer> checkIn = Arrays.asList(value)
             .stream()
             .map(x -> Integer.parseInt(x))
-            .collect(null);
+            .collect(Collectors.toList());
         
         data.setCheckIn(new Time(checkIn.get(0), checkIn.get(1), 0));
 
         List<Integer> checkOut = Arrays.asList(tfCheckOut.getText().split(":"))
             .stream()
             .map(x -> Integer.parseInt(x))
-            .collect(null);
+            .collect(Collectors.toList());
         
         data.setCheckOut(new Time(checkOut.get(0), checkOut.get(1), 0));
 
