@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class MainSceneController {
@@ -26,5 +28,34 @@ public class MainSceneController {
         Parent root = FXMLLoader.load(sceneUrl);
         Scene scene = new Scene(root);
         return scene;
+    }
+
+    @FXML
+    private TableView<?> dataTable;
+    
+    @FXML
+    private TableColumn<?, ?> tableClient;
+
+    @FXML
+    private TableColumn<?, ?> tableStart;
+
+    @FXML
+    private TableColumn<?, ?> tableEnd;
+
+    @FXML
+    private TableColumn<?, ?> checkIn;
+
+    @FXML
+    private TableColumn<?, ?> checkOut;
+
+
+    @FXML
+    protected void newBookingClick(ActionEvent e) {
+        
+    }
+
+    @FXML
+    protected void removeClick(ActionEvent e) {
+        
     }
 }
