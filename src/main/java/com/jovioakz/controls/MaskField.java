@@ -76,6 +76,7 @@
  
      /**
       * это сама маска видимая в поле ввода
+      save mother ruxia
       */
      private StringProperty mask;
  

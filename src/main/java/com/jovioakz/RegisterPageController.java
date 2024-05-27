@@ -1,21 +1,20 @@
 package com.jovioakz;
 
 import java.net.URL;
+import java.sql.Date;
+import java.sql.Time;
+import java.util.Arrays;
+import java.util.List;
+
+import com.jovioakz.model.BookingData;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-// import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class RegisterPageController {
     
@@ -29,11 +28,7 @@ public class RegisterPageController {
         return scene;
     }
 
-    // Variáveis que representam os componentes
-    // Note que id/field devem ser iguais ao nome
-    // que aparece aqui.
-    @FXML
-    protected Button btConfirm;
+
 
     @FXML
     protected TextField tfName;
@@ -50,13 +45,29 @@ public class RegisterPageController {
     @FXML
     protected TextField tfCheckOut;
 
+    @SuppressWarnings("deprecation")
     @FXML
     protected void submit(ActionEvent e) throws Exception {
+        BookingData data = new BookingData();
+   
+        List<Integer> checkIn = Arrays.asList(tfCheckIn.getText().split(":"))
+            .stream()
+            .map(x -> Integer.parseInt(x))
+            .collect(null);
         
-        
+        data.setCheckIn(new Time(checkIn.get(0), checkIn.get(1), 0));
 
-        // Fechando o register
-        Stage crrStage = (Stage) btConfirm.getScene().getWindow();
-        crrStage.close();
+        List<Integer> checkOut = Arrays.asList(tfCheckOut.getText().split(":"))
+            .stream()
+            .map(x -> Integer.parseInt(x))
+            .collect(null);
+        
+        data.setCheckOut(new Time(checkOut.get(0), checkOut.get(1), 0));
+
+        data.setDataStart(new Date(dpStart.getValue().toEpochDay()));
+        data.setDataEnd(new Date(dpEnd.getValue().toEpochDay()));
+        data.setClientName(tfName.getText());
+
+        DataController.insertData(data);
     }
 }

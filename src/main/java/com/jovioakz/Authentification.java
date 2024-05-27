@@ -32,6 +32,7 @@ public class Authentification {
         query.setParameter("user", user);
 
         // Chama a query
+        @SuppressWarnings("unchecked")
         List<UserData> users = query.list();
         transaction.commit();
         if (users.size() == 0)
