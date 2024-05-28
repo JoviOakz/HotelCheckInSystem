@@ -27,6 +27,7 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <mapping class="com.jovioakz.model.BookingData"/>
         <mapping class="com.jovioakz.model.UserData"/>
     </session-factory>
 </hibernate-configuration>

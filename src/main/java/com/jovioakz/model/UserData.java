@@ -14,12 +14,7 @@ public class UserData {
 
     @Column(name = "Userpass")
     private String userpass;
-
-    @Column(name = "IsAdm")
-    private Boolean isAdm;
     
-    @Column(name = "IsRandPass")
-    private Boolean isRandPass;
 
     public Long getId() {
         return this.id;
@@ -43,21 +38,5 @@ public class UserData {
 
     public void setUserpass(String value) {
         this.userpass = value;
-    }
-
-    public Boolean getIsAdm() {
-        return this.isAdm;
-    }
-
-    public void setIsAdm(Boolean value) {
-        this.isAdm = value;
-    }
-
-    public Boolean getIsRandPass() {
-        return this.isRandPass;
-    }
-
-    public void setIsRandPass(Boolean value) {
-        this.isRandPass = value;
     }
 }

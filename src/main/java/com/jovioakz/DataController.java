@@ -9,6 +9,37 @@ import org.hibernate.Transaction;
 import com.jovioakz.model.BookingData;
 
 public class DataController {
+    public static List<BookingData> getBookings() {
+        Session session = HibernateUtil
+                .getSessionFactory()
+                .getCurrentSession();
+
+        Transaction transaction = session.beginTransaction();
+
+
+        Query query = session.createQuery("from BookingData");
+
+        List<BookingData> values = query.list();
+
+        transaction.commit();
+
+        return values;
+    }
+
+
+    public static void removeData(BookingData data) {
+        Session session = HibernateUtil
+                .getSessionFactory()
+                .getCurrentSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        session.delete(data);
+
+        transaction.commit();
+    }
+
+
     public static void insertData(BookingData data) {
         Session session = HibernateUtil
                 .getSessionFactory()
@@ -16,17 +47,7 @@ public class DataController {
 
         Transaction transaction = session.beginTransaction();
 
-        Query query = session.createQuery("insert into BookingData(ClientName, DataStart, DataEnd, CheckIn, CheckOut) " +
-                                          "values (':ClientName', ':DataStart', ':DataEnd', ':CheckIn', ':CheckOut')");
-
-        query.setParameter("ClientName", data.getClientName());
-        query.setParameter("DataStart", data.getDataStart());
-        query.setParameter("DataEnd", data.getDataEnd());
-        query.setParameter("CheckIn", data.getCheckIn());
-        query.setParameter("CheckOut", data.getCheckOut());
-
-        int updated = query.executeUpdate();
-        
+        session.save(data);
         transaction.commit();
     }
 }

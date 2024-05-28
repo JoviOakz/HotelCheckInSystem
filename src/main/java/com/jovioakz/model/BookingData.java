@@ -4,9 +4,15 @@ import java.sql.*;
 
 import javax.persistence.*;
 
+import com.jovioakz.BookingDataRow;
+
+import javafx.beans.property.SimpleStringProperty;
+
 @Entity
 @Table(name = "BookingData")
 public class BookingData {
+    
+
     @Id
     @GeneratedValue
     private Long id;
@@ -15,16 +21,16 @@ public class BookingData {
     private String clientname;
 
     @Column(name = "DataStart")
-    private Date datastart;
+    private java.util.Date datastart;
 
     @Column(name = "DataEnd")
-    private Date dataend;
+    private java.util.Date dataend;
 
     @Column(name = "CheckIn")
-    private Time checkin;
+    private String checkin;
 
     @Column(name = "CheckOut")
-    private Time checkout;
+    private String checkout;
 
     public Long getId() {
         return this.id;
@@ -42,35 +48,35 @@ public class BookingData {
         this.clientname = value;
     }
 
-    public Date getDataStart() {
+    public java.util.Date getDataStart() {
         return this.datastart;
     }
 
-    public void setDataStart(Date value) {
+    public void setDataStart(java.util.Date value) {
         this.datastart = value;
     }
 
-    public Date getDataEnd() {
+    public java.util.Date getDataEnd() {
         return this.dataend;
     }
 
-    public void setDataEnd(Date value) {
+    public void setDataEnd(java.util.Date value) {
         this.dataend = value;
     }
 
-    public Time getCheckIn() {
+    public String getCheckIn() {
         return this.checkin;
     }
 
-    public void setCheckIn(Time value) {
+    public void setCheckIn(String value) {
         this.checkin = value;
     }
 
-    public Time getCheckOut() {
+    public String getCheckOut() {
         return this.checkout;
     }
 
-    public void setCheckOut(Time value) {
+    public void setCheckOut(String value) {
         this.checkout = value;
     }
 }

@@ -1,6 +1,9 @@
 package com.jovioakz;
 
 import java.net.URL;
+
+import javax.swing.Action;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,10 +42,9 @@ public class LoginSceneController {
     @FXML
     protected PasswordField pfPass;
     
-    @FXML
-    protected CheckBox cbPass;
 
-    // Evento submit executado ao rodar a aplicação.
+
+
     @FXML
     protected void submit(ActionEvent e) throws Exception {
         Authentification auth = Authentification.tryLogin(tfLogin.getText(), pfPass.getText());
@@ -62,10 +64,9 @@ public class LoginSceneController {
         Stage crrStage = (Stage) btLogin.getScene().getWindow();
         crrStage.close();
 
-        // // Abrindo a tela principal
-        // Stage stage = new Stage();
-        // Scene scene = MainSceneController.CreateScene();
-        // stage.setScene(scene);
-        // stage.show();
+        Stage stage = new Stage();
+        stage.setScene(MainSceneController.CreateScene());
+        stage.setTitle("Controle de Reservas");
+        stage.show();
     }
 }

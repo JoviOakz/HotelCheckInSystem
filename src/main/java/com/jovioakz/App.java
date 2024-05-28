@@ -11,8 +11,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = RegisterPageController.CreateScene();
+        Scene scene = LoginSceneController.CreateScene();
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Login no sistema");
         primaryStage.show();
     }
 }
