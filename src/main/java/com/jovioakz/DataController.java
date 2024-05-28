@@ -13,19 +13,19 @@ public class DataController {
         Session session = HibernateUtil
                 .getSessionFactory()
                 .getCurrentSession();
+
         Transaction transaction = session.beginTransaction();
 
-        // Cria uma query com um parâmetro
-        Query query = session.createQuery("insert into BookingData values (:ClientName, :DataStart, :DataEnd, :CheckIn, :CheckOut)");
+        Query query = session.createQuery("insert into BookingData(ClientName, DataStart, DataEnd, CheckIn, CheckOut) " +
+                                          "values (':ClientName', ':DataStart', ':DataEnd', ':CheckIn', ':CheckOut')");
+
         query.setParameter("ClientName", data.getClientName());
         query.setParameter("DataStart", data.getDataStart());
         query.setParameter("DataEnd", data.getDataEnd());
         query.setParameter("CheckIn", data.getCheckIn());
         query.setParameter("CheckOut", data.getCheckOut());
 
-        // Chama a query
-        @SuppressWarnings({ "unchecked", "unused" })
-        List<BookingData> result = query.list();
+        int updated = query.executeUpdate();
         
         transaction.commit();
     }
