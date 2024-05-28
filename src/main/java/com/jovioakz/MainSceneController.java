@@ -11,7 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 public class MainSceneController {
-    
+
     // Vamos fazer uma função CreateScene que irá
     // criar a cena apartir de um FXMLLoader carregando
     // o .fxml.
@@ -25,7 +25,7 @@ public class MainSceneController {
 
     @FXML
     private TableView<?> dataTable;
-    
+
     @FXML
     private TableColumn<?, ?> tableClient;
 
@@ -41,14 +41,13 @@ public class MainSceneController {
     @FXML
     private TableColumn<?, ?> checkOut;
 
-
     @FXML
     protected void newBookingClick(ActionEvent e) {
-        
+
     }
 
     @FXML
     protected void removeClick(ActionEvent e) {
-        
+
     }
 }
