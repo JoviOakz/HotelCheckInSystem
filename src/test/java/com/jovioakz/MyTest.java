@@ -5,27 +5,18 @@ import org.junit.jupiter.api.Test;
 
 // A classe deve terminar com 'Test' no nome.
 class MyTest {
-    private final DateValidator validator = new DateValidator();
 
     @Test
     void validate() {
         // Data
-        assertEquals(validator.validate(29, 2, 2024), true);
-
-        assertEquals(validator.validate(29, 2, 2025), false);
-
-        assertEquals(validator.validate(30, 2, 2024), false);
-
-        assertEquals(validator.validate(30, 12, 1800), true);
-
-        assertEquals(validator.validate(29, 2, 1800), false);
-
-        assertEquals(validator.validate(29, 2, 1600), true);
-
-        assertEquals(validator.validate(4, 1, 2023), true);
-
-        assertEquals(validator.validate(31, 4, 2000), false);
-
-        assertEquals(validator.validate(29, 4, 2001), true);
+        assertEquals(true, TimeValidator.validateTime("23:00"));
+        assertEquals(false, TimeValidator.validateTime("26:00"));
+        assertEquals(true, TimeValidator.validateTime("21:00"));
+        assertEquals(false, TimeValidator.validateTime("-10:00"));
+        assertEquals(false, TimeValidator.validateTime("24:00"));
+        assertEquals(true, TimeValidator.validateTime("22:11"));
+        assertEquals(true, TimeValidator.validateTime("2:59"));
+        assertEquals(false, TimeValidator.validateTime("23:60"));
+        assertEquals(false, TimeValidator.validateTime("23:100"));
     }
 }

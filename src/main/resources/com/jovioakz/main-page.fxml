@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -12,11 +13,12 @@
          <children>
             <AnchorPane layoutX="61.0" layoutY="23.0" maxHeight="49.0" maxWidth="640.0" minHeight="35.0" minWidth="640.0" prefHeight="35.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#newBookingClick" prefHeight="25.0" prefWidth="94.0" text="Nova Reserva" />
-                  <Button layoutX="557.0" layoutY="5.0" mnemonicParsing="false" onAction="#removeClick" prefHeight="25.0" prefWidth="69.0" text="Remover" />
+                  <Button layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#newBookingClick" prefHeight="25.0" prefWidth="94.0" text="Nova Reserva" AnchorPane.leftAnchor="14.0" />
+                  <Button layoutX="557.0" layoutY="5.0" mnemonicParsing="false" onAction="#removeClick" prefHeight="25.0" prefWidth="69.0" text="Remover" AnchorPane.rightAnchor="14.0" />
+                  <TextField fx:id="tbSearch" layoutX="247.0" layoutY="5.0" onKeyReleased="#tbSearchPress" promptText="Search" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="244.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="35.0" prefHeight="363.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane layoutY="35.0" prefHeight="363.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="37.0">
                <children>
                   <TableView fx:id="dataTable" fixedCellSize="0.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>

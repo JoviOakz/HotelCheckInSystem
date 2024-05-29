@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 import javax.annotation.Resources;
 
@@ -14,6 +15,7 @@ import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +25,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MainSceneController implements Initializable {
@@ -57,6 +61,9 @@ public class MainSceneController implements Initializable {
 
     @FXML
     private TableColumn<BookingData, String> checkOut;
+
+    @FXML
+    private TextField tbSearch;
 
     @FXML
     protected void newBookingClick(ActionEvent e) {
@@ -102,20 +109,14 @@ public class MainSceneController implements Initializable {
         return value;
     }
 
-    private void loadDataTable() {
-        tableClient.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getClientName()));
-        tableStart.setCellValueFactory(x -> new SimpleStringProperty(getDataString(x.getValue().getDataStart())));
-        tableEnd.setCellValueFactory(x -> new SimpleStringProperty(getDataString(x.getValue().getDataEnd())));
-        checkIn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getCheckIn()));
-        checkOut.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getCheckOut()));
+    private ObservableList<BookingData> principalList = FXCollections.observableArrayList();
 
-        
-        dataTable.setItems(FXCollections.observableArrayList());
-     
+    private void loadDataTable() {
+        principalList.clear();
         List<BookingData> data = DataController.getBookings();
 
         for (BookingData d : data) {
-            dataTable.getItems().add(d);
+            principalList.add(d);
         }
 
         dataTable.refresh();
@@ -123,6 +124,31 @@ public class MainSceneController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       loadDataTable();
+        tableClient.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getClientName()));
+        tableStart.setCellValueFactory(x -> new SimpleStringProperty(getDataString(x.getValue().getDataStart())));
+        tableEnd.setCellValueFactory(x -> new SimpleStringProperty(getDataString(x.getValue().getDataEnd())));
+        checkIn.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getCheckIn()));
+        checkOut.setCellValueFactory(x -> new SimpleStringProperty(x.getValue().getCheckOut()));
+        dataTable.setItems(principalList);
+        loadDataTable();
+
+    }
+
+    @FXML
+    protected void tbSearchPress(KeyEvent e) {
+        String value = tbSearch.getText().toLowerCase();
+
+        FilteredList<BookingData> filteredList = new FilteredList<>(principalList);
+
+        dataTable.setItems(filteredList);
+
+        filteredList.setPredicate(new Predicate<BookingData>() {
+            public boolean test(BookingData b) {
+                if (b.getClientName().toLowerCase().contains(value))
+                    return true;
+                
+                return false;
+            }
+        });
     }
 }

@@ -15,8 +15,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RegisterPageController {
@@ -48,6 +50,14 @@ public class RegisterPageController {
     @FXML
     protected TextField tfCheckOut;
 
+    private void showError(String title) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setContentText(title);
+        alert.setTitle("!!!!!!ERRO!!!!!!");
+
+        alert.showAndWait();
+    }
+
     @SuppressWarnings("deprecation")
     @FXML
     protected void submit(ActionEvent e) throws Exception {
@@ -57,6 +67,15 @@ public class RegisterPageController {
         data.setCheckIn(tfCheckIn.getText());
         
         data.setCheckOut(tfCheckOut.getText());
+
+        if (!TimeValidator.validateTime(tfCheckIn.getText())) {
+            showError("Invalid checkin time!");
+            return;
+        }
+        if (!TimeValidator.validateTime(tfCheckOut.getText())) {
+            showError("Invalid checkout time!");
+            return;
+        }
 
         LocalDate start_date = dpStart.getValue();
         LocalDate end_date = dpEnd.getValue();
